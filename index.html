@@ -136,8 +136,11 @@ The payment reference should be the recipient meter number & the electricity tok
 	document.getElementById('phone').style.border = "1px solid red";
 	
 	} else {
-	document.querySelector('a[href="#input_meter_number"]').setAttribute('href','#next');
+	window.setTimeout(function() {
+	document.querySelector('a[href="#input_meter_number"]').setAttribute('href','#next'); }
+	,1000);
 	document.getElementById('meter').style.border = "";
+	document.getElementById('phone').style.border = "";
 	document.querySelector('a[href="#next"]').click();
 	}
 	
