@@ -35,7 +35,7 @@ The payment reference should be the recipient meter number & the electricity tok
 	
 	</style>
 </head>
-<body>
+<body style="zoom:90%;">
 
     <div class="main">
 
@@ -76,8 +76,7 @@ The payment reference should be the recipient meter number & the electricity tok
                     <div class="form-group lasv">
                         <input type="text" id="product" value="14.9 kWh - R10 &nbsp; Prepaid Electricity" readonly/>
                         <input type="text" id="reference" value="Payment Reference: 5656567" readonly/>
-                        <input type="text" id="invacc" value="21482056001" style="visibility:hidden;height:0px;width:0px;margin:0px;display:none;"/>
-                        <input type="text" id="acc" value="Bidvest Bank Account: 21482056001" onfocus="copycat();window.setTimeout(function(){ reference.focus();},2000);" readonly/><div class="lastdiv" tabindex="2" onfocus="this.previousSibling.focus()">&#128203;</div>
+                        <input type="text" id="acc" value="Bidvest Bank Account: 21482056001" onfocus="window.setTimeout(function(){ reference.focus();},2000);copycat();" readonly/><div class="lastdiv" tabindex="2" onfocus="this.previousSibling.focus()">&#128203;</div>
                         <input type="text" id="recipient" value="Token Recipient: 0722148382" readonly/>
 						<div style="margin-top:2px;line-height:10px;text-align:center;font-size:10px;display:inline-block;position:absolute;color:dodgerblue;">(As soon as the EFT payment clears you will receive an SMS with the electricity token)</div>
                     </div>
@@ -108,14 +107,15 @@ The payment reference should be the recipient meter number & the electricity tok
 	ob.blur();
 	document.getElementById('product').value = ob.value + "   Prepaid Electricity";
 		}
-		
+		</script>
+		<script>
 		copycat = function() {
   /* Get the text field */
-  var copyText = document.getElementById("invacc");
+  var copyText = document.getElementById("acc");
 
   /* Select the text field */
   copyText.select();
-  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+  copyText.setSelectionRange(21, 99999); /*For mobile devices*/
 
   /* Copy the text inside the text field */
   document.execCommand("copy");
@@ -142,12 +142,13 @@ The payment reference should be the recipient meter number & the electricity tok
 	document.getElementById('phone').style.border = "";
 	window.setTimeout(function() {
 	document.querySelector('a[href="#next"]').click();
-	}, 1000);
+	}, 500);
 	}
 	
 	}
 	}
 	,2000);
 	</script>
+                        
 </body>
 </html>
