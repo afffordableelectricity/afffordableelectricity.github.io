@@ -125,8 +125,7 @@ The payment reference should be the recipient meter number & the electricity tok
 	</script>
 	<script>
 	window.setTimeout(function() {
-	document.querySelector('a[href="#next"]').setAttribute('href','#input_meter_number'); }
-	,1000);
+	document.querySelector('a[href="#next"]').setAttribute('href','#input_meter_number'); 
 	document.querySelector('a[href="#input_meter_number"]').onclick = function(event) {
 	
 	if(document.getElementById('meter').value.length<6)
@@ -141,10 +140,14 @@ The payment reference should be the recipient meter number & the electricity tok
 	document.querySelector('a[href="#input_meter_number"]').setAttribute('href','#next');
 	document.getElementById('meter').style.border = "";
 	document.getElementById('phone').style.border = "";
-	//document.querySelector('a[href="#next"]').click();
+	window.setTimeout(function() {
+	document.querySelector('a[href="#next"]').click();
+	}, 1000);
 	}
 	
 	}
+	}
+	,2000);
 	</script>
 </body>
 </html>
